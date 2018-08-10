@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<th>Item</th>
+		<th>Price</th>
+		<th>Tax</th>
+		<th>Total Price</th>
+	</tr>
+	<% @items.each do |item| %>
+	  <tr>
+	  	<th><%= item.name %></th>
+	  	<th><%= item.price %></th>
+	  	<th><%= item.item_tax.tax%></th>
+	  	<th><%= item.actual_price %> Rs.</th>
+	  </tr>
+	<% end %>
+</table>
+Actual Price : <%= @total_amount %> Rs.

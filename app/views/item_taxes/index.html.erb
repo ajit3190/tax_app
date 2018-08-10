@@ -1,0 +1,31 @@
+<div>
+  <%= link_to 'Add ItemTax', new_item_tax_path %>
+</div>
+<div>
+  <%= link_to 'home', home_index_path %>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Item</th>
+      <th>Tax Type</th>
+      <th>Tax</th>
+      <th>Action</th>
+    </tr>
+    <% @item_taxes.each do |item_tax| %>
+      <tr>
+        <th><%= item_tax.id %></th>
+        <th><%= item_tax.name %></th>
+        <th><%= item_tax.item.name %></th>
+        <th><%= item_tax.tax_type %></th>
+        <th><%= item_tax.tax %></th>
+        <th>
+          <%= link_to 'Edit', edit_item_tax_path(item_tax)%> | 
+          <%= link_to 'Delete', item_tax_path(item_tax), :method => 'delete', :confirm => 'Are you sure?'%>
+        </th>
+      </tr>
+    <% end %>
+  </table>
+</div>

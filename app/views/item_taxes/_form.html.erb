@@ -1,0 +1,52 @@
+<%= form_for(@item_tax) do |f| %>
+
+  <% if @item_tax.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_tax.errors.count, "error") %> prohibited this item_tax from being saved:</h2>
+
+      <ul>
+      <% @item_tax.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="col-25">
+      <%= f.label :Item %>
+    </div>
+    <div class="col-75">
+      <%= f.collection_select :item_id, @items, :id, :name, {:prompt => "Choose a item"}, {:class =>  "form-control required"}  %>
+    </div>
+  </div>
+  <div>
+    <div class="col-25">
+      <%= f.label :name %>
+    </div>
+    <div class="col-75">
+      <%= f.text_field :name, required: true%>
+    </div>
+  </div>
+
+    <div>
+    <% tax_type = {1 => "percentage", 2 => "amount" } %>
+    <div class="col-25">
+      <%= f.label :tax_type %>
+    </div>
+    <div class="col-75">
+      <%= f.collection_select :tax_type, tax_type, :last, :last, {:prompt => "Choose a Tax Type"}, {:class =>  "form-control required"}  %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :tax %>
+    <div class="col-75">
+      <%= f.text_field :tax, required: true%>
+    </div>
+  </div>
+
+  <div class="col-lg-10">
+    <%= f.submit "Save",:class=>"btn btn-danger"%>
+  </div>  
+<% end %>

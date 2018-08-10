@@ -1,0 +1,46 @@
+<div class="container">
+  <%= form_for(@item) do |f| %>
+
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+        <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div  class="row">
+      <div class="col-25">
+        <%= f.label :name %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :name, required: true%>
+      </div>
+    </div>
+
+    <div  class="row">
+      <div class="col-25">
+        <%= f.label :price %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :price, required: true%>
+      </div>
+    </div>
+
+    <div  class="row">
+      <div class="col-25">
+        <%= f.label :category %>
+      </div>
+      <div class="col-75">
+        <%= f.collection_select :item_category_id, @categories, :id, :name, {:prompt => "Choose a category"}, {:class =>  "form-control required"}  %>
+      </div>
+    </div>
+    <div class="row">
+        <%= f.submit "Save"%>&nbsp;&nbsp;&nbsp;
+        <%= link_to "Cancel", items_path, class: "button" %>
+      </div>    
+  <% end %>
+</div>

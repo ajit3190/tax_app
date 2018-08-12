@@ -5,4 +5,11 @@ development:
   database: tax_app
   username: postgres
   password: postgres123
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: tax_app
+  username: postgres
+  password: postgres123
 

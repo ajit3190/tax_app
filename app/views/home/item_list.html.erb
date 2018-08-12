@@ -1,18 +1,27 @@
+<div>
+  <%= link_to 'home', home_index_path %>
+</div>
 <%= form_tag display_bill_home_index_path, :method => "GET", :id => "form" do |f| %>
 	<ul>
 		<% @categories.each do |category| %>
 		  <li><%= category.name %></li>
 		  <ul>
 		  	<% category.items.each do |item| %>
-		  	  <li>
-		  	  	<%= check_box_tag('items[]', item.id, false, :class => "filled-in", :id =>  item.id) %>
-		  	  	<%= item.name%>
-		  	  </li>
+		  	  <% if item.item_tax.present? %>
+			  	  <li>
+			  	  	<%= check_box_tag('items[]', item.id, false, :class => "filled-in", :id =>  item.id) %>
+			  	  	<%= item.name %>
+			  	  </li>
+			  	<% end %>
 		  	<% end %>
 		  </ul>
 		<% end %>
 	</ul>
 	<div class="col-lg-10">
-    <%= submit_tag "Pay",:class=>"btn btn-danger"%>
+		<% if @categories.present? %>
+      <%= submit_tag "Pay",:class=>"btn btn-danger"%>
+    <% else %>
+      <p> Add some Items First </p>
+    <% end %>
   </div> 
 <% end %>

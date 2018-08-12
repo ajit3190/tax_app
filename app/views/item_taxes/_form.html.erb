@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="row">
     <div class="col-25">
       <%= f.label :Item %>
     </div>
@@ -20,7 +20,7 @@
       <%= f.collection_select :item_id, @items, :id, :name, {:prompt => "Choose a item"}, {:class =>  "form-control required"}  %>
     </div>
   </div>
-  <div>
+  <div class="row">
     <div class="col-25">
       <%= f.label :name %>
     </div>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-    <div>
+  <div class="row">
     <% tax_type = {1 => "percentage", 2 => "amount" } %>
     <div class="col-25">
       <%= f.label :tax_type %>
@@ -39,14 +39,17 @@
     </div>
   </div>
 
-  <div>
-    <%= f.label :tax %>
+  <div class="row">
+    <div class="col-25">
+      <%= f.label :tax %>
+    </div>
     <div class="col-75">
       <%= f.text_field :tax, required: true%>
     </div>
   </div>
 
-  <div class="col-lg-10">
+  <div class="row">
     <%= f.submit "Save",:class=>"btn btn-danger"%>
+     <%= link_to "Cancel", item_taxes_path, class: "button" %>
   </div>  
 <% end %>

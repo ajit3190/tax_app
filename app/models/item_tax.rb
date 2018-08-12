@@ -4,7 +4,7 @@ class ItemTax < ApplicationRecord
 	validates :name, presence: true
 	validates :tax_type, presence: true
 	validates :tax, presence: true, numericality: { greater_than: 0.0 }
-  validates :item, presence: true, uniqueness: true
+    validates :item, presence: true, uniqueness: true
 	enum tax_type: { percentage: 1, amount: 2}
 
 	after_save :update_item
